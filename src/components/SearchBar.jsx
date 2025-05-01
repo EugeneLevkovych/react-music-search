@@ -11,7 +11,7 @@ useEffect(() => {
     setLoading(true);
     setError(null);
     try {
-      const url = `https://proxy.corsfix.com/?https://api.deezer.com/search?q=${encodeURIComponent(searchQuery)}`;
+      const url = `https://proxy.corsfix.com/?https://api.deezer.com/search?q=${searchQuery}`;
       const response = await fetch(url);
       if (!response.ok) throw new Error('Network error');
       const { data } = await response.json();
@@ -36,7 +36,7 @@ useEffect(() => {
       setLoading(true);
       setError(null);
 
-const url = `https://api.deezer.com/search?q=${encodeURIComponent(query)}`;
+const url = `https://api.deezer.com/search?q=${query}`;
 
 const proxyUrl = `https://proxy.corsfix.com/?${url}`;
 
