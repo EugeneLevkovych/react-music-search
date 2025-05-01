@@ -3,6 +3,7 @@ import SearchBar from './components/SearchBar';
 import TrackList from './components/TrackList';
 
 
+
 export default function App() {
   const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(false);

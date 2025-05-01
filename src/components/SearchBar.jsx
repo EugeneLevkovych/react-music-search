@@ -1,8 +1,31 @@
 import { useRef } from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function SearchBar({ setTracks, setLoading, setError }) {
   const inputRef = useRef();
+//-----------------------------------------------------------
+const [searchQuery, setSearchQuery] = useState('Al Jarreau');
+useEffect(() => {
+  const fetchTracks = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const url = `https://proxy.corsfix.com/?https://api.deezer.com/search?q=${encodeURIComponent(searchQuery)}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network error');
+      const { data } = await response.json();
+      setTracks(data || []);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  fetchTracks();
+}, []);
+//----------------------------------------------------------
   const handleSearch = async (e) => {
     e.preventDefault();
     const query = inputRef.current.value.trim();
