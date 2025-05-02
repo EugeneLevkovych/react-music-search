@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 export default function SearchBar({ setTracks, setLoading, setError }) {
   const inputRef = useRef();
 
-  //-------------------try-------------------------------------
+  //-------------------init-artist------------------------------------
   useEffect(() => {
     const fetchInitArtist = async () => {
             const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q="Al Jarreau"`;
@@ -46,7 +46,7 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
 
 
   return (
-    <form onSubmit={handleSearch}>
+    <form className='search-bar' onSubmit={handleSearch}>
       <input
         ref={inputRef}
         type="text"
