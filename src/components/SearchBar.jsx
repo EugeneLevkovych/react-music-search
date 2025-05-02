@@ -1,30 +1,20 @@
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import { useState } from 'react';
 
 export default function SearchBar({ setTracks, setLoading, setError }) {
   const inputRef = useRef();
-//-----------------------------------------------------------
-const [searchQuery, setSearchQuery] = useState('Al Jarreau');
-useEffect(() => {
-  const fetchTracks = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const url = `https://proxy.corsfix.com/?https://api.deezer.com/search?q=${searchQuery}`;
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Network error');
-      const { data } = await response.json();
-      setTracks(data || []);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
-  fetchTracks();
-}, []);
+  //-------------------try-------------------------------------
+  useEffect(() => {
+    const fetchInitArtist = async () => {
+            const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q="Al Jarreau"`;
+            const response = await fetch(initUrl);
+        
+            const { data } = await response.json();
+            setTracks(data);         
+        };
+        fetchInitArtist();
+  }, []);
 //----------------------------------------------------------
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -53,6 +43,7 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
       setLoading(false);
     }
   };
+
 
   return (
     <form onSubmit={handleSearch}>
