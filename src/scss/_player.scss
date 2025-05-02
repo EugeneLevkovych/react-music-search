@@ -1,0 +1,11 @@
+.player {
+    display: flex;
+    justify-content: center;
+    &__button {
+        border: none;
+        border-radius: 3px;
+        background-color: var(--color-acid);
+
+        &:hover {background-color: var(--color-orange)};
+    }
+}

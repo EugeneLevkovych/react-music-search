@@ -1,15 +1,43 @@
 .track-list {
-   
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
     &__card {
-        width: calc((100% - 4rem) / 3);
         display: flex;
         flex-direction: column;
         overflow: hidden;
         background-color: var( --color-primary-light);
         border-radius: 8px;
+        padding-bottom: .5rem;
+    }
+
+    &__album-title {
+        text-align: center;
+        margin-bottom: .5rem;
+    }
+
+    &__artist-name {
+        text-align: center;
+        margin-bottom: .5rem;
+    }
+
+    &__button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .track-list {
+        &__card {
+            width: calc((100% - 2rem) / 2);
+        }
+    }
+}
+@media only screen and (min-width: 1240px) {
+    .track-list {
+        &__card {
+            width: calc((100% - 4rem) / 3);
+        }
     }
 }
