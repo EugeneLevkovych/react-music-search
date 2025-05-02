@@ -1,6 +1,15 @@
 .track-list {
+   
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     justify-content: center;
+    &__card {
+        width: calc((100% - 4rem) / 3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background-color: var( --color-primary-light);
+        border-radius: 8px;
+    }
 }

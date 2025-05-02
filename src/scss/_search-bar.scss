@@ -2,5 +2,17 @@
     display: flex;
     justify-content: center;
     gap: 1rem;   
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
+    &__input {
+        width: 30rem;
+        height: 3rem ;
+        border: none;
+        border-radius: 2px;
+        padding-left: 1rem;
+    } 
+    &__button {
+        border-radius: 2px;
+        width: 10rem;
+        border: none;
+    }
 }

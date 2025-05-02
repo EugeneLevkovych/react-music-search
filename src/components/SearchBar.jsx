@@ -47,12 +47,12 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
 
   return (
     <form className='search-bar' onSubmit={handleSearch}>
-      <input
+      <input className='search-bar__input'
         ref={inputRef}
         type="text"
         placeholder="Search for tracks or artists..."
       />
-      <button type="submit">Search</button>
+      <button className='search-bar__button' type="submit">Search</button>
     </form>
   );
 }
