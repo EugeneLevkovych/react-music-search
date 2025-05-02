@@ -7,7 +7,8 @@ export default function SearchBar({ setTracks, setLoading, setError }) {
   //-------------------init-artist------------------------------------
   useEffect(() => {
     const fetchInitArtist = async () => {
-            const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q="Al Jarreau"`;
+               const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q=${encodeURIComponent("Al Jarreau")}`
+            // const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q="Al Jarreau"`;
             const response = await fetch(initUrl);
         
             const { data } = await response.json();
