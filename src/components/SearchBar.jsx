@@ -1,14 +1,17 @@
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
-export default function SearchBar({ setTracks, setLoading, setError }) {
+export default function SearchBar({ tracks, setTracks }) {
   const inputRef = useRef();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
 
   //-------------------init-artist------------------------------------
   useEffect(() => {
     const fetchInitArtist = async () => {
-               const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q=${encodeURIComponent("Al Jarreau")}`
-            // const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q="Al Jarreau"`;
+            const initUrl = `https://proxy.corsfix.com/?https://api.deezer.com/search?q="Al Jarreau"`;
             const response = await fetch(initUrl);
         
             const { data } = await response.json();
@@ -47,6 +50,7 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
 
 
   return (
+    <>
     <form className='search-bar' onSubmit={handleSearch}>
       <input className='search-bar__input'
         ref={inputRef}
@@ -55,5 +59,9 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
       />
       <button className='search-bar__button' type="submit">Search</button>
     </form>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      {!loading && !error && tracks.length === 0 && <p>Nothihg found </p>}
+    </>
   );
 }
