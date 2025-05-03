@@ -1,3 +1,5 @@
+@use'./mixins';
+
 .search-bar {
     display: flex;
     justify-content: center;
@@ -14,6 +16,11 @@
         border-radius: 2px;
         width: 10rem;
         border: none;
+        transition: all 0.2s;
+
+
+        @include mixins.hover;
+        @include mixins.active;
     }
 }
 @media only screen and (min-width: 768px) {

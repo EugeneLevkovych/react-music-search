@@ -1,6 +1,7 @@
 @use'./base';
 @use'./container';
-@use'./app';
+@use'./mixins';
+@use'./header';
 @use'./search-bar';
 @use'./track-list';
 @use'./player'

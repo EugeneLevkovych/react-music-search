@@ -1,11 +1,16 @@
+@use'./mixins';
+
 .player {
     display: flex;
     justify-content: center;
     &__button {
+        padding: 3px 1rem;
         border: none;
         border-radius: 3px;
-        background-color: var(--color-acid);
+        background-color: var(--color-white);
+        transition: all 0.2s;
 
-        &:hover {background-color: var(--color-orange)};
+        @include mixins.hover;
+        @include mixins.active;
     }
 }
