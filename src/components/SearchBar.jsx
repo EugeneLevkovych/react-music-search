@@ -15,7 +15,8 @@ export default function SearchBar({ tracks, setTracks }) {
             const response = await fetch(initUrl);
         
             const { data } = await response.json();
-            setTracks(data);         
+            setTracks(data); 
+            inputRef.current.focus();        
         };
         fetchInitArtist();
   }, []);
@@ -45,6 +46,8 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
       setError(err.message);
     } finally {
       setLoading(false);
+       inputRef.current.value = ''
+       inputRef.current.focus();
     }
   };
 
@@ -61,7 +64,7 @@ const proxyUrl = `https://proxy.corsfix.com/?${url}`;
     </form>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {!loading && !error && tracks.length === 0 && <p>Nothihg found </p>}
+      {!loading && !error && tracks.length === 0 && <p>Nothihg found.</p>}
     </>
   );
 }
